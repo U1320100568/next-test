@@ -24,6 +24,7 @@ description: repo的程式碼框架
     * 後端api都需要unit test，前端component基本不需要，除非額外說明。
     * 無論前後端，被拉出來的utility codes(一般放在lib下)，大多都需要有unit test。
   * 測試時若沒有提供test env，使用docker compose啟動需要的external service (ex: mongodb)
+- 環境變數：使用dotenv管理，測試環境預設為 .env.test
 
 另外，專案支援2類使用者：
 - user: 一般使用者，放在 "user" collection 中。
