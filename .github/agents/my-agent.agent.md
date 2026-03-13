@@ -40,10 +40,10 @@ description: repo的程式碼框架
   * user 修改密碼 api，僅允許使用者修改自己的密碼。
   * 如上所述，需提供unit tests
 - 前端：
-  * admin/* 頁面需登入方可使用，若沒有登入，redirect 至 /admin/login
+  * 產生/admin頁面，作為一個簡單的dashbaord入口，所有admin/* 頁面需登入方可使用，若沒有登入，redirect 至 /admin/login
   * admin/* 下的頁面採用 dashboard 的 layout，可參考 antd 的 side panel / main panel layout
   * admin user登入時，存放 jwt token至localStorage，注意key命名需要以 "admin"開頭，以便與加入一般user login區分。
-  * 提供 admin/users 頁面，供管理者查看目前的使用者列表，UI介面上需支援pagination。並將此頁面的連結放到side panel中。
+  * 提供 admin/users 頁面，供管理者對一般使用者進行CRUD處理，listiew UI 使用antd talbe並且需支援pagination。並將此頁面的連結放到side panel中。
   * 提供簡單首頁，有hero banner，數個responsive feature grid，文案任意填入。
   * 首頁上方的 header 拉出作為一個獨立的 SiteHeader component
     * 此component上具備讓一般使用者登入登出的功能。尚未登入時，顯示"登入"，已經登入後，顯示 username 以及 登出 按鈕。
