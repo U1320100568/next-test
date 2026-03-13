@@ -24,7 +24,7 @@ description: repo的程式碼框架
     * 後端api都需要unit test，前端component基本不需要，除非額外說明。
     * 無論前後端，被拉出來的utility codes(一般放在lib下)，大多都需要有unit test。
   * 測試時若沒有提供test env，使用docker compose啟動需要的external service (ex: mongodb)
-- 環境變數：使用dotenv管理，測試環境預設為 .env.test
+- 環境變數: 使用dotenv管理，測試環境預設為.env.test
 
 另外，專案支援2類使用者：
 - user: 一般使用者，放在 "user" collection 中。
@@ -40,10 +40,13 @@ description: repo的程式碼框架
   * user 修改密碼 api，僅允許使用者修改自己的密碼。
   * 如上所述，需提供unit tests
 - 前端：
-  * 產生/admin頁面，作為一個簡單的dashbaord入口，所有admin/* 頁面需登入方可使用，若沒有登入，redirect 至 /admin/login
+  * 產生/admin頁面，作為一個簡單的dashboard入口，所有/admin/*頁面需登入方可使用，若沒有登入，redirect 至 /admin/login
   * admin/* 下的頁面採用 dashboard 的 layout，可參考 antd 的 side panel / main panel layout
   * admin user登入時，存放 jwt token至localStorage，注意key命名需要以 "admin"開頭，以便與加入一般user login區分。
-  * 提供 admin/users 頁面，供管理者對一般使用者進行CRUD處理，listiew UI 使用antd talbe並且需支援pagination。並將此頁面的連結放到side panel中。
+  * 提供 admin/users 頁面，供管理者對一般使用者進行CRUD處理
+    * listview UI使用antd table並且支援pagination
+    * create / update按下後應跳出一個Modal，Modal內則是一個編輯表單的UI
+    * 將此頁面的連結放到side panel中。
   * 提供簡單首頁，有hero banner，數個responsive feature grid，文案任意填入。
   * 首頁上方的 header 拉出作為一個獨立的 SiteHeader component
     * 此component上具備讓一般使用者登入登出的功能。尚未登入時，顯示"登入"，已經登入後，顯示 username 以及 登出 按鈕。
@@ -61,3 +64,4 @@ description: repo的程式碼框架
   * 前端支援的頁面描述至 PAGES.md
   * 所有使用到的環境變數整理至 ENV.md
   * integration-tests/README.md 列出所有的 integratin test case
+  * 互動式api docs: 務必確保使用 {docsRoute} from "next-rest-framework" 在 /api/docs 下有正確生成live api page
