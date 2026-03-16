@@ -46,11 +46,10 @@ describe('JWT 工具', () => {
     });
 
     it('access token 不應該被 verifyRefreshToken 接受（不同 secret）', () => {
-      process.env.JWT_SECRET = 'test-access-secret';
-      process.env.JWT_REFRESH_SECRET = 'test-refresh-secret';
-      // Re-import after env change won't work easily, just verify different secrets logic
-      const accessToken = jwt.sign(payload, 'test-access-secret', { expiresIn: '1m' });
-      expect(() => jwt.verify(accessToken, 'test-refresh-secret')).toThrow();
+      // Verify that tokens signed with different secrets are rejected
+      // This tests the underlying jwt.verify behavior without modifying env vars
+      const accessToken = jwt.sign(payload, 'secret-a', { expiresIn: '1m' });
+      expect(() => jwt.verify(accessToken, 'secret-b')).toThrow();
     });
   });
 });

@@ -38,7 +38,7 @@ export default function AdminUsersPage() {
     } finally {
       setLoading(false);
     }
-  }, [page]);
+  }, []);
 
   useEffect(() => { fetchUsers(page); }, [page, fetchUsers]);
 
